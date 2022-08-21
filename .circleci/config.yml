@@ -1,20 +1,9 @@
 version: 2.1
 
-orbs:
-  node: circleci/node@5.0.2
-
 jobs:
   build:
     docker:
-      - image: cimg/node:17.2.0
+      - image: cimg/node:18.7.0
     steps:
       - checkout
-      - run: 
-          command: | 
-            echo "hi"
-
-workflows:
-  regex-tests:
-    jobs:
-      - build
-      - node/test
+      - run: node --version
