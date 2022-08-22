@@ -4,9 +4,21 @@ workflows:
   test-deploy:
     jobs:
       - build
+      - test
 
 jobs:
   build:
+    docker:
+      - image: cimg/node:18.7.0
+    steps:
+      - checkout
+      - run: 
+          name: Install Dependencies
+          command: npm install
+      - run:
+          name: Run Tests
+          command: npm run test
+  test:
     docker:
       - image: cimg/node:18.7.0
     steps:
